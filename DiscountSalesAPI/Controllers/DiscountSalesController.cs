@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DiscountSalesAPI.Models;
-using log4net.Core;
+//using log4net.Core;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace DiscountSalesAPI.Controllers
 {
     [ApiController]    
-    [Route("Discounts/DiscountSales")]
-    //[Route("api/[controller]")]
+    [Route("Discounts/DiscountSales")]   
     public class DiscountSalesController : ControllerBase
     {
 
@@ -33,9 +33,13 @@ namespace DiscountSalesAPI.Controllers
 
             try
             {
-                //return await _mediator.Send(new DiscountSalesCommand { 
 
-                
+                _logger.LogInformation("Discount Sales Started.");
+                return Ok();
+                //return await _mediator.Send(new DiscountSalesCommand
+                //{
+
+
                 //});
             }
             catch (Exception ex)

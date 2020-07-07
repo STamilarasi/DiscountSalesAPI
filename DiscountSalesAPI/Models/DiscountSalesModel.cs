@@ -35,7 +35,7 @@ namespace DiscountSalesAPI.Models
         public DiscountSalesModel[] DiscountModel { get; set; }
     }
 
-    public enum Type
+    public enum TypeInfo
     {
         OneItem = 0,
         MultipleItems = 1       

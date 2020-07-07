@@ -17,10 +17,5 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.1" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Handlers\" />
-    <Folder Include="Interfaces\" />
-  </ItemGroup>
-
 
 </Project>
