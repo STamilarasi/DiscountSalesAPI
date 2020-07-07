@@ -29,6 +29,15 @@ namespace DiscountSalesAPI
             services.AddMediatR(typeof(Startup));
             services.AddControllers();
 
+            services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("v2", new Microsoft.OpenApi.Models.OpenApiInfo
+                {
+                    Title = "Discount Sales API",
+                    Version = "v2",
+                    Description = "Discount Sales Promotion",
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,6 +58,10 @@ namespace DiscountSalesAPI
             {
                 endpoints.MapControllers();
             });
+
+            app.UseSwagger();
+            app.UseSwaggerUI(options => options.SwaggerEndpoint("/swagger/v2/swagger.json", "Discount Sales API"));
+
         }
     }
 }
