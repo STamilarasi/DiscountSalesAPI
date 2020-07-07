@@ -7,5 +7,7 @@ namespace DiscountSalesAPI.Models
 {
     public class DiscountSalesModel
     {
+
+
     }
 }

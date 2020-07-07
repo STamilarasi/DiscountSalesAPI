@@ -4,16 +4,16 @@
       "Id": "1",
       "Type": "OneItem",
       "Product": {
-        "SKUId1": "A"
+        "ProdId1": "A"
       },
-      "Operator": {
+      "Operation": {
         "Operator1": "*"
       },
       "Quantity": {
-        "QtyForProduct1": 3
+        "QtyofProd1": 3
       },
       "Cost": {
-        "CostForProduct1": 130
+        "CostofProd1": 130
       }
     },
 
@@ -21,55 +21,37 @@
       "Id": "2",
       "Type": "OneItem",
       "Product": {
-        "SKUId1": "B"
+        "ProdId1": "B"
       },
-      "Operator": {
+      "Operation": {
         "Operator1": "*"
       },
       "Quantity": {
-        "QtyForProduct1": 2
+        "QtyofProd1": 2
       },
       "Cost": {
-        "CostForProduct1": 45
+        "CostofProd1": 45
       }
     },
     {
       "Id": "3",
       "Type": "ManyItems",
       "Product": {
-        "SKUId1": "C",
-        "SKUId1": "D"
+        "ProdId1": "C",
+        "ProdId2": "D"
       },
-      "Operator": {
+      "Operation": {
         "Operator1": "+"
       },
       "Quantity": {
-        "QtyForProduct1": 1,
-        "QtyForProduct2": 1
+        "QtyofProd1": 1,
+        "QtyofProd2": 1
       },
       "Cost": {
-        "CostForProduct1": 130,
-        "CostForProduct2": 130
+        "CostofProd1": 30,
+        "CostofProd2": 30
       }
     }
-    {
-      "Identifier": "3",
-      "Type": "OnMultipleSKUsFixedPrice",
-      "SKUCollection": {
-        "SKUId1": "C",
-        "SKUId2": "D"
-      },
-      "OperatorCollection": {
-        "Operator1": "+"
-      },
-      "QutyOfSKUCollection": {
-        "QtyForSKUId1": "1",
-        "QtyForSKUId2": "1"
-      },
-      "CostCollection": {
-        "CostForSKUId1": 30,
-        "CostForSKUId2": 30
-      }
-    }
+   
   ]
 }
