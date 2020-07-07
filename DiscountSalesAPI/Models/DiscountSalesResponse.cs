@@ -4,11 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace DiscountSalesAPI.Models
-{
-    public class DiscountSalesResponse
-    {
-        public List<Product> CartOrder { get; set; }
-    }   
+{      
 
     public class Product
     {
@@ -20,6 +16,11 @@ namespace DiscountSalesAPI.Models
 
     public class AfterDiscount
     {
-        public List<Product> ProcessedCartOrder { get; set; }
+        public List<Product> AfterDiscountValue { get; set; }
+    }
+
+    public class DiscountSalesResponse
+    {
+        public List<Product> Order { get; set; }
     }
 }

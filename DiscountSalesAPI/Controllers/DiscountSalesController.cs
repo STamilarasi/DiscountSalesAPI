@@ -8,6 +8,7 @@ using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 
 namespace DiscountSalesAPI.Controllers
 {
@@ -30,17 +31,23 @@ namespace DiscountSalesAPI.Controllers
         [Route("ApplyDiscount")]
         public async Task<ActionResult> Post([FromBody] DiscountSalesModel discountSalesModel)
         {
-
             try
             {
-
                 _logger.LogInformation("Discount Sales Started.");
-                return Ok();
-                //return await _mediator.Send(new DiscountSalesCommand
-                //{
 
-
-                //});
+                var req = JsonConvert.DeserializeObject<DiscountSalesResponse>(discountSalesModel.ToString());
+                if (!(req.Order.Any()))
+                {
+                    return StatusCode(404, "No item is there to Apply Discount.");
+                }
+                
+                    var result = await _mediator.Send(new Query
+                    {
+                        CartOrderContratContract = orderFeed
+                    });
+                
+                return Ok(result);
+               
             }
             catch (Exception ex)
             {
