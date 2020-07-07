@@ -2,8 +2,11 @@
 using DiscountSalesAPI.Models;
 using MediatR;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -13,10 +16,10 @@ namespace DiscountSalesAPI.Handlers
     public class DiscountSalesCommand : IRequestHandler<Requ, AfterDiscount>
     {
         
-        private readonly IDiscountSales _discount;
+        private  IDiscountSalesOneItem _discount;
         private readonly ILogger _logger;
 
-        public DiscountSalesCommand(IDiscountSales discountSales, ILogger logger)
+        public DiscountSalesCommand(IDiscountSalesOneItem discountSales, ILogger logger)
         {            
             _discount = discountSales;
             _logger = logger;
@@ -27,6 +30,20 @@ namespace DiscountSalesAPI.Handlers
             _logger.LogInformation("Started to calculate the discount of the products.");
             try
             {
+                //Read from the JSON file
+               var discountSalesModel = JsonConvert.DeserializeObject<Discounts>(JsonConvert.SerializeObject(
+               JObject.Parse(File.ReadAllText("Discount.json")),Formatting.Indented));
+
+                foreach(var discount in discountSalesModel.DiscountModel)
+                {
+                    if(discount.Type == TypeInfo.OneItem.ToString())
+                    {
+                        _discount = new DiscountSalesOneItem();
+
+
+                    }
+
+                }
 
             }
             catch (Exception ex)
@@ -40,6 +57,6 @@ namespace DiscountSalesAPI.Handlers
 
     public class Requ : IRequest<AfterDiscount>
     {
-        public DiscountSalesResponse CartOrderContratContract { get; set; }
+        public DiscountSalesResponse Response { get; set; }
     }
 }

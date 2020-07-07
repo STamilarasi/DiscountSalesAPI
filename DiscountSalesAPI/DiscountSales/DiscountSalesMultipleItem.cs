@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DiscountSalesAPI.DiscountSales
 {
-    public class DiscountSales : IDiscountSales
+    public class DiscountSalesMultipleItem : IDiscountSalesMultipleItem
     {
         public Product CalculateDiscounts(TypeInfo typeInfo, DiscountSalesModel discountSalesModel, Product product)
         {

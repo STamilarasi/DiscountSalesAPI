@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DiscountSalesAPI.Handlers;
 using DiscountSalesAPI.Models;
 //using log4net.Core;
 using MediatR;
@@ -12,8 +13,8 @@ using Newtonsoft.Json;
 
 namespace DiscountSalesAPI.Controllers
 {
-    [ApiController]    
-    [Route("Discounts/DiscountSales")]   
+    [ApiController]
+    [Route("Discounts/DiscountSales")]
     public class DiscountSalesController : ControllerBase
     {
 
@@ -28,7 +29,7 @@ namespace DiscountSalesAPI.Controllers
 
         // POST: api/DiscountSales
         [HttpPost]
-        [Route("ApplyDiscount")]
+        [Route("ApplyDiscountForItems")]
         public async Task<ActionResult> Post([FromBody] DiscountSalesModel discountSalesModel)
         {
             try
@@ -40,14 +41,14 @@ namespace DiscountSalesAPI.Controllers
                 {
                     return StatusCode(404, "No item is there to Apply Discount.");
                 }
-                
-                    var result = await _mediator.Send(new Query
-                    {
-                        CartOrderContratContract = orderFeed
-                    });
-                
+
+                var result = await _mediator.Send(new Requ
+                {
+                    Response = req
+                });
+
                 return Ok(result);
-               
+
             }
             catch (Exception ex)
             {
@@ -55,6 +56,6 @@ namespace DiscountSalesAPI.Controllers
             }
         }
 
-       
+
     }
 }
